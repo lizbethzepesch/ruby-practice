@@ -1,0 +1,1 @@
+printenv HELLO_COURSE
