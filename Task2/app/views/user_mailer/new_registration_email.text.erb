@@ -1,0 +1,5 @@
+Hi <%= @user.email %>,
+----------------------------------
+Someone requested a verify email.
+Click the link above if you recognise the activity, link expires in 15 minutes.
+<%= link_to 'Varify email', sign_up_verification_url(token: @token) %>

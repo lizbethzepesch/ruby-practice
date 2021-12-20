@@ -1,0 +1,339 @@
+.personal-info {
+  color: #000000DE;
+  text-align: left;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 24px;
+}
+
+
+.content-block {
+  width: 100%;
+  margin: 0px;
+  padding: 83px;
+  background: white;
+
+}
+
+#render-block {
+  display: inline-block;
+}
+
+.form-update {
+  margin: 0px auto;
+  border-top: 1px solid lightgrey;
+  width: 30%;
+  padding-top: 20px;
+}
+
+.personal-block-h {
+  width: 30%;
+  margin: 0 auto;
+}
+
+
+.image-input-coach {
+  width: 100%;
+  padding: 5px;
+}
+
+.image-input-coach input {
+  display: none;
+}
+
+.image-input-coach img {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background-color: white;
+
+  position: absolute;
+}
+
+.image-input-coach label {
+  width: 60%;
+  margin-left: 30%;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 15px;
+  padding-bottom: 10px;
+
+}
+
+.labels {
+  font-size: 16px;
+  padding: 5px;
+  line-break: normal;
+}
+
+.field {
+  width: 100%;
+  border: 1px solid #000000C7;
+  border-radius: 5px;
+  padding: 12px;
+  color: #707070;
+  /* opacity: 0.6; */
+  font-size: 20px;
+}
+
+.btn-sing-up {
+  font-family: Roboto, Ligth;
+  color: #FFFFFF;
+  border-color: rgba(173, 181, 189, 1);
+  background: #212529;
+  width: 100%;
+}
+
+.size-total-coach {
+  text-align: center;
+  font-size: 30px;
+  color:#000000DE;
+  width: 100%;
+}
+
+.tt {
+  margin: 0px;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  color:#000000DE;
+}
+
+.coach-stats {
+  font-size: 48px;
+  margin: 0px;
+  width: 100%;
+  text-align: center;
+  color:#000000DE;
+}
+
+.total-current-box-coach {
+  border-radius: 5px;
+  width: 100%;
+  background: #00000014;
+  padding: 10px;
+}
+
+.about-user {
+  padding-left: 5px;
+}
+
+.user-t-info {
+  font-weight: bold;
+  color: #000000DE;
+  font-size: 16px;
+  margin: 0px;
+}
+
+.user-t-info-complete {
+  color:#707070;
+  font-size: 12px;
+  margin: 0px;
+  padding-top: 4px;
+  padding-bottom: 3px;
+}
+
+.see-detail-button {
+  font-size: 14px;
+  color: #000000DE;
+  width: 100%;
+  text-align: right;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+
+.edit-prof-coach {
+  position: absolute;
+  width: 10px;
+  height: 20px;
+  top: 14px;
+  font-size: 18px;
+  right: 30px;
+}
+
+.pc {
+  margin-bottom: 4px;
+}
+
+.my-users-page {
+  padding: 17.6px;
+  text-align: center;
+  color: #000000DE;
+  font-size: 14px;
+  border-bottom: 1px solid lightgray;
+}
+
+.active-page {
+    border-bottom: 2px solid black;
+}
+
+#div-waiting-users {
+  display: none
+}
+
+
+#waiting {
+  background: white;
+  border: none;
+  outline: none;
+}
+
+#my-users {
+  background: white;
+  border: none;
+  outline: none;
+}
+
+
+.buttons-list {
+  width: 100%;
+  padding: 5px;
+}
+
+.button-confirm {
+  display: inline-block;
+  border: none;
+  outline: none;
+  float: right;
+  padding: 5px;
+  background: white;
+  font-size: 14px;
+  color: #000000;
+}
+
+
+.button-refuse {
+  display: inline-block;
+  border: none;
+  background: white;
+  outline: none;
+  float: right;
+  color: #000000;
+  opacity: 0.5;
+  font-size: 14px;
+  padding: 5px;
+}
+
+.avatar-coach-users {
+  width: 63px;
+  height: 63px;
+}
+
+
+.distance {
+  margin-bottom: 20px;
+}
+
+.tags-div-absolute {
+  position: absolute;
+  bottom: 1px;
+  left: 1px;
+  width: 100%;
+  padding: 10px;
+}
+
+.tags-in-image {
+    display: inline-block;
+    border-radius: 20px;
+    background: #FFFFFFCC;
+
+    font-size: 14px;
+    padding: 7px;
+    border: 1px solid #707070;
+    text-align: center;
+    color: #000000DE;
+    opacity: 0.9;
+}
+
+.step-title-card {
+  font-size: 20px;
+  color: #000000;
+  opacity: 1;
+  margin-bottom: 30px;
+}
+
+.layer {
+ overflow: scroll; /* Добавляем полосы прокрутки */
+ width: 100%; /* Ширина блока */
+ height: 600px; /* Высота блока */
+
+}
+
+.pading-recoomend-card {
+  margin-top: 25px;
+}
+
+
+.mb-new {
+  border-bottom: 1px solid #dee2e6;
+}
+
+.btn-send {
+  font-family: Roboto, Ligth;
+  color: #FFFFFF;
+  border-color: rgba(173, 181, 189, 1);
+  background: #212529;
+  width: 30%;
+
+}
+
+.users-count {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #000000DE;
+  margin-bottom: 10px;
+}
+
+.no-recommended-technique {
+  margin-top: 10px;
+  color: #707070;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.user-pancakes {
+  width: 30px;
+  height: 30px;
+}
+
+
+.check-circle-dashbord {
+  position: absolute;
+  top: 24%;
+  right: 1%;
+  font-size: 16px;
+}
+
+.warning-color {
+  color: black;
+  opacity: 0.7;
+}
+
+.mul {
+  margin-top: 25px;
+}
+
+.date-block {
+  position: absolute;
+  width: 92%;
+  bottom: 15px;
+  left: 15px;
+}
+
+.date-info {
+  color: #000000DE;
+  opacity: 0.5;
+  font-size: 12px;
+}
+
+.completed_techniques {
+  font-size: 12px;
+  color: #707070;
+  margin-bottom: 5px;
+}
+
+.color-button-non-active {
+  color: #000000;
+  opacity: 0.5;
+}

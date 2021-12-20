@@ -1,0 +1,454 @@
+body {
+  margin: 0;
+    font-family: Roboto, Regular;
+}
+
+.nav_background {
+    background: rgba(73, 80, 87, 1);
+}
+
+.nav-link-style {
+    width: 130px;
+    text-align: center;
+    letter-spacing: 0px;
+    color: rgba(173, 181, 189, 1);
+}
+.logo {
+    color: rgba(222, 226, 230, 1);
+    font-size: 16px;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+}
+.button_color {
+    background: rgba(108, 117, 125, 1);
+}
+.logo-button {
+    top: 0px;
+    width: 164px;
+    height: 60px;
+    background: rgba(108, 117, 125, 1) 0% 0% no-repeat padding-box;
+    border: 1px solid rgba(112, 112, 112, 1);
+    opacity: 1;
+}
+.navbar {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    position: fixed;
+}
+.pad {
+    padding-left: 83px;
+    padding-right: 83px;
+}
+
+.btn-sing-in {
+    font-family: Roboto, Ligth;
+    color: rgba(173, 181, 189, 1);
+    border-color: rgba(173, 181, 189, 1);
+
+
+}
+.content {
+    width: 100%;
+    margin: 0px;
+    padding: 83px;
+    background: rgba(73, 80, 87, 1);
+}
+
+.content-two {
+    width: 100%;
+    margin: 0px;
+    padding: 83px;
+    background-color: #DEE2E6;
+}
+img {
+    width: 100%;
+    opacity: 1;
+    height: 100%;
+    background-color:rgba(0,0,0,1);
+
+
+}
+.padding {
+    padding: 83px;
+}
+
+.text {
+    font-size: 96px;
+    color: rgba(255, 255, 255, 1);
+}
+
+.text-after {
+    font-size: 24px;
+    color: rgba(173, 181, 189, 1);
+    padding-top: 20px;
+    padding-bottom: 50px;
+}
+
+.btn-join-us {
+    color: rgba(255, 255, 255, 1);
+    width: 50%;
+    background-color: rgba(33, 37, 41, 1);
+}
+
+.btn-join-us-center {
+    color: rgba(255, 255, 255, 1);
+    width: 20%;
+    margin: 0 auto;
+    text-align: center;
+    background-color: rgba(33, 37, 41, 1);
+}
+.stats-data {
+    color: rgba(255, 255, 255, 0.87);
+    font-size: 48px;
+    text-align: center;
+}
+
+.stats-field {
+    color: rgba(173, 181, 189, 1);
+    text-align: center;
+    font-size: 16px;
+
+}
+
+.marg {
+    margin-top: 60px;
+}
+
+h3 {
+    font-size: 48px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+
+.colum-users-coaches {
+    color: #000000DE;
+    padding-left: 25px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    font-size: 34px;
+}
+.colum-users-coaches-data {
+    background: #CED4DA;
+    border-radius: 5px;
+    color: #000000DE;
+    font-size: 20px;
+    padding: 10px;
+}
+.pad-in-block {
+    padding: 10px;
+    width: 80%;
+    display: inline-block;
+}
+
+.list-number {
+    display: inline-block;
+    color: #000000DE;
+    width: 10%;
+    margin: 0px;
+    font-size: 60px;
+}
+
+.content-techniques {
+    width: 100%;
+    margin: 0px;
+    padding: 83px;
+    background-color: #F8F9FA;
+}
+
+.about-techniques {
+    padding: 10px;
+    color: #000000DE;
+    font-size: 16px;
+    text-align: center;
+    width: 100%;
+}
+
+.title {
+    font-size: 48px;
+    text-align: center;
+
+}
+.card-img-top {
+    width: 100%;
+}
+.item {
+    position:relative;
+    display:inline-block;
+    height: 40%;
+}
+
+.notify-badge {
+    border-radius: 5px;
+    background: #495057;
+    font-size: 10px;
+    right:20px;
+    top:15px;
+    padding: 5px;
+    text-align: center;
+    position: absolute;
+    color: #FFFFFFDE;
+    opacity: 0.9;
+}
+
+.tag-badge {
+    border-radius: 20px;
+    background: white;
+    opacity: 0.7;
+    font-size: 14px;
+    left:20px;
+    bottom:15px;
+    padding: 7px;
+    border: 1px solid #979797;
+    text-align: center;
+    position: absolute;
+    color: #000000DE;
+}
+.tag-badge-second {
+    border-radius: 20px;
+    background: white;
+    opacity: 0.7;
+    font-size: 14px;
+    left: 110px;
+    bottom:15px;
+    padding: 7px;
+    border: 1px solid #979797;
+    text-align: center;
+    position: absolute;
+    color: #000000DE;
+}
+
+.title_card {
+    font-size: 20px;
+    text-align: left;
+}
+
+.description {
+    color: #000000DE;
+    opacity: 0.7;
+    font-size: 14px;
+}
+
+.age {
+    width: 100%;
+    text-align: left;
+    font-size: 12px;
+    letter-spacing: 0.4px;
+    color: #000000DE;
+    opacity: 0.9;
+}
+
+.gender {
+    width: 100%;
+    text-align: left;
+    font-size: 12px;
+    letter-spacing: 0.4px;
+    color: #000000DE;
+    opacity: 0.9;
+}
+
+.duration {
+    width: 100%;
+    text-align: left;
+    font-size: 12px;
+    letter-spacing: 0.4px;
+    color: #000000DE;
+    opacity: 0.9;
+}
+
+.step {
+    width: 100%;
+    text-align: left;
+    font-size: 12px;
+    letter-spacing: 0.4px;
+    color: #000000DE;
+    opacity: 0.9;
+}
+
+ul.hr {
+    position:absolute;
+    bottom: 15px;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+
+}
+ul.hr li {
+    display: inline;
+    margin-right: 10px;
+    padding: 3px;
+}
+
+.content-coaches {
+    background: #ADB5BD;
+    width: 100%;
+    margin: 0px;
+    padding: 83px;
+}
+
+.avatar {
+    width: 100%;
+    height: 40%;
+
+}
+.icon-link {
+    display: inline-block;
+    width: 33%;
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+    color: #6C757D;
+}
+
+.image-avatar {
+    display: inline-block;
+    width: 30%;
+}
+
+.coach-name {
+    text-align: center;
+    width: 100%;
+    color: #000000DE;
+    font-size: 20px;
+}
+
+.status {
+    text-align: center;
+    width: 100%;
+    font-size: 14px;
+    color: #000000DE;
+    margin-bottom:8px;
+}
+
+.coach-info {
+    font-size: 12px;
+    width: 100%;
+    text-align: center;
+    color: #000000DE;
+    opacity: 0.8;
+}
+
+.coach-info-left {
+    font-size: 12px;
+    width: 100%;
+    text-align: left;
+    color: #000000DE;
+    opacity: 0.8;
+}
+
+.tages-info {
+    font-size: 12px;
+    width: 100%;
+    margin-bottom: 5px;
+    text-align: left;
+    color: #000000DE;
+    opacity: 0.8;
+}
+
+.tags {
+    display: inline-block;
+    border-radius: 20px;
+    background: #0000000D;
+
+    font-size: 14px;
+    padding: 7px;
+    border: 1px solid #707070;
+    text-align: center;
+    color: #000000DE;
+    margin-bottom: 10px;
+}
+
+.education-data {
+    width: 100%;
+    font-size: 14px;
+    color: #000000DE;
+    opacity: 0.8;
+    text-align: left;
+}
+.send-an-inv {
+    position:absolute;
+    width: 90%;
+    bottom: 10px;
+    text-align: center;
+    font-size: 14px;
+    color: #000000DE;
+    opacity: 0.5;
+}
+
+.center {
+    text-align: center;
+}
+
+.small-card {
+    width: 100%;
+}
+.name-coach {
+    width: 75%;
+    text-align: left;
+    margin-left: 75px;
+    display: inline-block;
+
+}
+
+.image-avatar-small {
+    position: absolute;
+    display: inline-block;
+    width: 15%;
+    top:10px;
+    left: 10px;
+    height: 100%;
+}
+footer {
+    margin: 0px;
+    width: 100%;
+    padding-left: 83px;
+    padding-right: 83px;
+    background: #6C757D;
+    color: #FFFFFFDE;
+}
+.footer-main {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    display: inline-block;
+}
+.footer-menu {
+    display: inline-block;
+    float: right;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 25px;
+}
+
+.body {
+    padding: 8.5px;
+}
+
+.box {
+  background: #CED4DA;
+  border-radius: 4px;
+
+}
+
+.number-size {
+  font-size: 60px;
+  text-align: center;
+  letter-spacing: -0.48px;
+  color: #000000DE;
+  opacity: 1;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.text-col-10 {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 20px;
+  text-align: left;
+  color: #000000DE;
+}

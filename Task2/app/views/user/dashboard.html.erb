@@ -1,0 +1,290 @@
+<% content_for :content do %>
+<div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content"></div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-8">
+    <div class="row">
+      <div class="col-3">
+        <div class="total-current-box">
+          <span class="size-total"><i class="bi bi-check-circle"></i> Total progress</span>
+          <div class="total-statistic">
+            <div class="big-numder">
+              <%= @total_competed_techniques %>
+            </div>
+            <div class="of">
+              techniques completed
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-3">
+        <div class="total-current-box">
+          <span class="size-total"><i class="bi bi-play-circle"></i> Current progress</span>
+          <div class="total-statistic">
+            <div class="big-numder">
+              <%= @total_in_progress_technique %>
+            </div>
+            <div class="of">
+              techniques in process
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-3">
+        <div class="total-current-box">
+          <span class="size-total"><i class="bi bi-clock"></i> Total time</span>
+          <div class="total-statistic">
+            <div class="big-numder">
+              <%= @total_hours %>
+            </div>
+            <div class="of">
+              hours for technigues
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="col-3">
+        <div class="total-current-box">
+          <span class="size-total"><i class="bi bi-check-circle"></i> Current time</span>
+          <div class="total-statistic">
+            <div class="big-numder">
+              <%= @current_hours %>
+            </div>
+            <div class="of">
+              hours for technigues
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+
+    <div class="row-width">
+      <div class="row">
+        <div class="col-11 mt">
+          My techniques
+        </div>
+        <div class="col-1 sa">
+          See All
+        </div>
+      </div>
+
+
+    </div>
+    <br>
+    <div class="row">
+      <% @recommendations.each do |recommendation|%>
+        <div class="col-6 distance">
+          <div class="card h-100">
+            <div class="item">
+              <% if recommendation.status == 'recommended' %>
+                <span class="notify-badge">RECOMMENDS</span>
+              <% elsif recommendation.status == 'compeleted' %>
+                <span class="notify-badge">COMPLETED</span>
+              <% end %>
+              <% if recommendation.technique.photo.attached? %>
+                <img src="<%= url_for(recommendation.technique.photo) %>" class= "card-img-top" alt="...">
+              <% else %>
+                <img src="<%= asset_path('anthony-tran-vXymirxr5ac-unsplash.jpg') %>" class="card-img-top" alt="...">
+              <% end %>
+
+              <span class="steps-passed"><%= recommendation.step %>/<%= recommendation.technique.total_steps %> steps passed</span>
+              <% if recommendation.technique.problems %>
+                <div class="tags-div-absolute">
+                  <% recommendation.technique.problems.each do |problem|%>
+                    <span class="tags-in-image "><%= problem.name%></span>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+            <div class="card-body">
+              <h6 class="title_card"><%= recommendation.technique.title %></h6>
+              <p class="description"><%= recommendation.technique.description %></p>
+              <div class="age">Age: <strong><%= recommendation.technique.age %> years</strong></div>
+              <div class="gender">Gender:<strong> <%= recommendation.technique.gender %></strong></div>
+              <br>
+              <div class="step">Steps: <strong><%= recommendation.technique.total_steps %></strong></div>
+              <div class="duration">Duration: <strong><%= recommendation.technique.duration %></strong></div>
+              <div class="row">
+                <div class="col-2 image-coach-techinque">
+                  <% if recommendation.coach.avatar.attached? %>
+                    <img src="<%= url_for(recommendation.coach.avatar) %>" class= "rounded-circle notification-avatar">
+                  <% else %>
+                    <img src="<%= asset_path('generic-user-icon-10.png') %>" class="rounded-circle notification-avatar">
+                  <% end %>
+                </div>
+                <div class="col-10 name-coach-techinque">
+                  <%= recommendation.coach.name %>
+                </div>
+              </div>
+              <ul class="hr">
+                <li><i class="bi bi-people"></i> <%= Recommendation.where(technique_id: recommendation.technique.id).count%></li>
+                <li><i class="bi bi-hand-thumbs-up"></i> <%= Rating.where(technique_id: recommendation.technique.id).sum(:like)%></li>
+                <li><i class="bi bi-hand-thumbs-down"></i> <%= Rating.where(technique_id: recommendation.technique.id).sum(:dislike)%></li>
+                <% if recommendation.step == 0 %>
+                  <li class="start-button"><%= link_to 'GET STARTED', user_technique_detail_path(technique_id: recommendation.technique.id, step_id: recommendation.step), class:"get_down_link"%></li>
+                <% elsif recommendation.status == 'compeleted'%>
+                  <li class="start-button"><%= link_to 'RESTART', restart_path(technique_id: recommendation.technique.id, step_id: recommendation.step), method: :patch, class:"get_down_link"%></li>
+                <% else %>
+                  <li class="start-button"><%= link_to 'CONTINUE', user_technique_detail_path(technique_id: recommendation.technique.id, step_id: recommendation.step), class:"get_down_link"%></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="card">
+      <div class="body">
+        <div class="small-card">
+          <div class="image-avatar-small">
+
+            <% if @user.avatar_user.attached? %>
+              <img src="<%= url_for(@user.avatar_user) %>" class= "image-size rounded-circle ">
+            <% else %>
+              <img src="<%= asset_path('generic-user-icon-10.png') %>" class="image-size rounded-circle">
+            <% end %>
+          </div>
+          <div class="name-coach">
+            <span class="coach-name"><%= @user.name %></span><br>
+            <span class="status"><%= @user.email %></span>
+            <p class="coach-info-left"><%= @user.age %> years | <%= @user.gender %></p>
+            <div class="edit-prof">
+              <i class="bi bi-three-dots-vertical"></i>
+            </div>
+
+          </div>
+          <p class="tages-info">Problems</p>
+          <% if @problems %>
+            <% @problems.each do |p| %>
+              <span class="tags"><%= p[:name] %></span>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="user-coach">
+      <div class="card">
+        <div class="body body_pad">
+          <% if @invite %>
+            <% if @invite.status == false %>
+                <div class="row">
+                  <div class="col-12 waiting">Waiting for confirmation</div>
+                  <div class="col-2 coach-block-cp">
+                    <% if @invite.coach.avatar.attached? %>
+                      <img src="<%= url_for(@invite.coach.avatar) %>" class= "rounded-circle notification-avatar">
+                    <% else %>
+                      <img src="<%= asset_path('generic-user-icon-10.png') %>" class="rounded-circle notification-avatar">
+                    <% end %>
+                  </div>
+                  <div class="col-6">
+                    <p class="coach-block-cp-text"><%= @invite.coach.name %></p>
+                  </div>
+                  <div class="col-4">
+                    <%= button_to 'CANCEL', cancel_coach_invite_path(@invite.id), method: :delete, class:"btn btn-sing-up"%>
+                  </div>
+                </div>
+            <% else %>
+              <div class="row">
+                <div class="col-12 waiting">Current coach</div>
+                <div class="col-2 coach-block-cp">
+                  <% if @invite.coach.avatar.attached? %>
+                    <img src="<%= url_for(@invite.coach.avatar) %>" class= "rounded-circle notification-avatar">
+                  <% else %>
+                    <img src="<%= asset_path('generic-user-icon-10.png') %>" class="rounded-circle notification-avatar">
+                  <% end %>
+                </div>
+                <div class="col-9">
+                  <p class="coach-block-cp-text"><%= @invite.coach.name %></p>
+                </div>
+                <div class="col-1">
+                  <div class="end-cooperation"><%= link_to raw("<i class=\"bi bi-three-dots-vertical get_down_link\"></i>"),
+                                    asking_form_path,
+                                    {:remote => true, 'data-bs-toggle' =>  "modal", 'data-bs-target' => '#modal-window'} %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% else %>
+              <div class="row">
+                <div class="col-2 coach-block-cp">
+                  <img src="<%= asset_path('generic-user-icon-10.png') %>" class="rounded-circle notification-avatar">
+                </div>
+                <div class="col-7">
+                  <p class="coach-block-cp-text">You don't have a coach yet</p>
+                </div>
+                <div class="col-3 p-in-block">
+                    <%= link_to '', user_coahes_page_path, class: "bi bi-chevron-compact-right get_down_link" %>
+                </div>
+              </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row-width">
+      <div class="row">
+        <div class="col-5 notifications-title">
+          Notifications
+        </div>
+        <div class="col-7 send-me-mail">
+
+            <div class="form-switch">
+              <label class="label-for-switch">Send me an email</label>
+              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"/>
+            </div>
+        </div>
+      </div>
+      <% if @notifications %>
+        <div class="layer">
+        <% @notifications.each do |data| %>
+          <div class="row">
+            <div class="col-2 notif-avatar-block">
+              <% if data.coach_id && data.user_id %>
+                <img src="<%= url_for(Coach.find_by_id(data.coach_id).avatar) %>" class="rounded-circle notification-avatar">
+              <% else %>
+                <% if @user.avatar_user.attached? %>
+                  <img src="<%= url_for(@user.avatar_user) %>" class= "rounded-circle notification-avatar">
+                <% else %>
+                  <img src="<%= asset_path('generic-user-icon-10.png') %>" class="rounded-circle notification-avatar">
+                <% end %>
+              <% end %>
+
+            </div>
+            <div class="col-7">
+              <p class="notif-text-block"><%= data.body %></p>
+              <p class="notif-hours-block"><%= time_lasted_since(data.created_at, data)%></p>
+            </div>
+            <div class="col-3 notif-tag-block ">
+              <% if data.status == true %>
+                  <span class="badge-tag">NEW</span>
+              <% else %>
+
+              <% end %>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      <% end %>
+
+  </div>
+
+</div>
+</div>
+
+<% end %>
+<%= render template: "user/show" %>

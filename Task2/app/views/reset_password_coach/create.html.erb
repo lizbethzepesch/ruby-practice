@@ -1,0 +1,24 @@
+    <nav class="navbar navbar-expand-lg nav_background fixed-top">
+      <div class="container-fluid pad">
+        <a class="navbar-brand logo logo-button" href="#">Logo</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
+    <div class="conteiner">
+      <h6>
+        <%= link_to "Go back", sign_in_path, class: "bi bi-chevron-left link-back" %>
+      </h6>
+      <div class="mail-icon">
+        <i class="bi bi-envelope-open"></i>
+      </div>
+      <h4 class="wait-title">Check your e-mail</h4>
+      <p class="help-text">We have sent a password recover instructions to your e-mail</p>
+      <p class="help-text"><strong><%= @coach.email %></strong></p>
+      <p class="lb">fefe</p>
+      <br>
+      <p class="verify-text">Did not receive the e-mail? Check your spam filter or</p>
+
+      <p class="verify-text"><strong><%= link_to 'resend', resend_coach_reset_path, class: "resend-link" %></strong></p>
+    </div>

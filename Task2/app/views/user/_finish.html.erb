@@ -1,0 +1,18 @@
+<div class="modal-header">
+  <h5 class="modal-title">Congratulations!</h5>
+  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body">
+  <p class="modal-message">You have finished completing the technique!</p>
+  <p class="modal-message">Share with us your impressions and whether you like</p>
+  <p class="modal-message">the technique.</p>
+  <br>
+
+  <p>Do you like this technique?</p>
+</div>
+<div class="modal-footer">
+
+  <%= link_to 'I DON\'T LIKE IT', dislike_rating_path, method: :post, class: "btn btn-secondary" %>
+  <%= link_to 'I LIKE IT', like_rating_path, method: :post, class: "btn btn-dark" %>
+
+ </div>

@@ -1,0 +1,189 @@
+<% content_for :content do %>
+
+
+
+<div class="row">
+
+  <div class="col-8">
+    <div class="row-width">
+
+      <div class="row">
+
+        <div class="col-6 my-users-page active-page">
+          <button id="my-users">My users</button>
+        </div>
+        <div class="col-6 my-users-page">
+          <button id="waiting">Waiting for confirmation (<%= @count %>)</button>
+        </div>
+
+      </div>
+
+      <div id="div-waiting-users">
+        <div class="row">
+          <% if @invitation %>
+            <% @invitation.each do |value| %>
+              <% if value.status == false %>
+                <div class="col-6">
+                  <br>
+                  <div class="card">
+                    <div class="body">
+                      <div class="small-card">
+                        <div class="image-avatar-small">
+                          <% if value.user.avatar_user.attached? %>
+                            <img src="<%= url_for(value.user.avatar_user) %>" class="rounded-circle avatar-coach-users">
+                          <% else %>
+                            <img src="<%= asset_path('generic-user-icon-10.png') %>" class="rounded-circle avatar-coach-users">
+                          <% end %>
+
+                        </div>
+                        <div class="name-coach">
+                          <span class="coach-name"><%= value.user.name %></span><br>
+                          <span class="status">User</span>
+                          <p class="coach-info-left"><%= value.user.age %> years | <%= value.user.gender %></p>
+                          <% if value.user.about %>
+                            <p class="coach-info-left"><%= value.user.about %></p>
+                          <% end %>
+                          <div class="edit-prof-coach">
+                            <i class="bi bi-envelope"></i>
+                          </div>
+                        </div>
+                        <div class="about-user">
+                          <p class="tages-info">Problems</p>
+                          <% value.user.problems.each do |problem|%>
+                            <span class="tags"><%= problem.name%></span>
+                          <% end %>
+
+                          <div class="buttons-list">
+                            <%= button_to 'CONFIRM', confirm_user_invite_path(value.id), method: :patch, class:"button-confirm"%>
+                            <%= button_to 'REFUSE', refuse_user_invite_path(value.id), method: :delete, class:"button-refuse" %>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          <% else %>
+            <p>You don't confirm any invitayions!</p>
+          <% end %>
+
+        </div>
+      </div>
+      <div id="div-my-users">
+        <div class="row">
+          <% if @invitation %>
+            <% @invitation.each do |value| %>
+              <% if value.status == true %>
+                <div class="col-6">
+                  <br>
+                  <div class="card">
+                    <div class="body">
+                      <div class="small-card">
+                        <div class="image-avatar-small">
+                          <% if value.user.avatar_user.attached? %>
+                            <img src="<%= url_for(value.user.avatar_user) %>" class="rounded-circle avatar-coach-users">
+                          <% else %>
+                            <img src="<%= asset_path('generic-user-icon-10.png') %>" class="rounded-circle avatar-coach-users">
+                          <% end %>
+
+                        </div>
+                        <div class="name-coach">
+                          <span class="coach-name"><%= value.user.name %></span><br>
+                          <span class="status">Current user</span>
+                          <p class="coach-info-left"><%= value.user.age %> years | <%= value.user.gender %></p>
+                          <div class="edit-prof-coach">
+                            <i class="bi bi-envelope"></i>
+                          </div>
+                        </div>
+                        <div class="about-user">
+                          <p class="tages-info">Problems</p>
+                          <% value.user.problems.each do |problem|%>
+                            <span class="tags"><%= problem.name%></span>
+                          <% end %>
+                          <p class="tages-info">Techniques in process</p>
+                          <% @user_data[value.user.email].each do |value|%>
+                            <% if value == "All techniques completed" %>
+                              <p class="completed_techniques"><%= value %></p>
+                            <% else %>
+                              <p class="user-t-info"><%= value %></p>
+                            <% end %>
+                          <% end %>
+                          <div class="see-detail-button"><%= link_to 'SEE DETAILS', user_detail_path(user_id: value.user.id), class: "get_down_link"%></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          <% else %>
+            <p>You don't confirm any invitayions!</p>
+          <% end %>
+
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+  <script type="text/javascript">
+    $('#waiting').click(function (){
+      $('#div-waiting-users').show();
+      $('#div-my-users').hide();
+    });
+    $('#my-users').click(function (){
+      $('#div-my-users').show();
+      $('#div-waiting-users').hide();
+    });
+  </script>
+
+  <div class="col-4">
+
+    <div class="row-width">
+      <div class="row">
+        <div class="col-12 notifications-title">
+          User's Notifications
+        </div>
+
+      </div>
+      <% if @notifications %>
+      <div class="layer">
+        <% @notifications.reverse_each do |data| %>
+          <div class="row">
+            <div class="col-2 notif-avatar-block">
+              <% if data.coach_id && data.user_id%>
+                <img src="<%= asset_path('generic-user-icon-10.png') %>" class="rounded-circle notification-avatar">
+              <% else %>
+                <% if @coach.avatar.attached? %>
+                  <img src="<%= url_for(@coach.avatar) %>" class= "rounded-circle notification-avatar">
+                <% else %>
+                  <img src="<%= asset_path('generic-user-icon-10.png') %>" class="rounded-circle notification-avatar">
+                <% end %>
+              <% end %>
+
+            </div>
+            <div class="col-7">
+              <p class="notif-text-block"><%= data.body %></p>
+              <p class="notif-hours-block"><%= time_lasted_since(data.created_at, data)%></p>
+            </div>
+            <div class="col-3 notif-tag-block ">
+              <% if data.status == true %>
+                  <span class="badge-tag">NEW</span>
+              <% else %>
+
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <% end %>
+
+    </div>
+
+  </div>
+
+</div>
+
+<% end %>
+<%= render template: "coach/show" %>

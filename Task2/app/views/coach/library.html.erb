@@ -1,0 +1,266 @@
+<% content_for :content do %>
+
+<div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content"></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-4">
+
+    <div class="row-width">
+      <%= form_with method: 'get', url: coach_library_page_path do |f| %>
+        <div class="row">
+          <div class="col-12 mt">
+            Filters
+          </div>
+          <div class="col-12 show-filters">
+            Show
+          </div>
+          <div class="col-12 filter-border">
+            <div class="form-check">
+              <input class="form-check-input checkbox" type="checkbox" value="" name="filter[status][]" id="checkbox0" onclick='checkedInput(this);'>
+              <label class="form-check-label" for="checkbox0">
+                All
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input checkbox" type="checkbox" value="status = 1" name="filter[status][]" id="checkbox2" onclick='checkedInput(this);'>
+              <label class="form-check-label" for="checkbox2">
+                Popular
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input checkbox" type="checkbox" value="status = 0" name="filter[status][]" id="checkbox3" onclick='checkedInput(this);'>
+              <label class="form-check-label" for="checkbox3">
+                New
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input checkbox" type="checkbox" value="recommend" id="checkbox4" name="filter[status][]" onclick='checkedInput(this);'>
+              <label class="form-check-label" for="checkbox4">
+                Recommended by me
+              </label>
+            </div>
+          </div>
+
+          <div class="col-12 show-filters">
+            Problems
+          </div>
+          <div class="col-12 filter-border">
+            <% @problems.each_with_index do |p, index|%>
+              <div class="form-check">
+                <input class="form-check-input checkbox" type="checkbox" value="<%= p.name %>" id="checkbox2<%= index %>" name="filter[problems][]" onclick='checkedInput(this);'>
+                <label class="form-check-label" for="checkbox2<%= index %>">
+                  <%= p.name %>
+                </label>
+              </div>
+            <% end %>
+          </div>
+
+          <div class="col-12 show-filters">
+            Gender
+          </div>
+          <div class="col-12 filter-border">
+            <div class="form-check">
+              <input class="form-check-input checkbox" type="checkbox" value="gender = 2" id="checkbox1" name="filter[gender][]" onclick='checkedInput(this);'>
+              <label class="form-check-label" for="checkbox1">
+                All
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input checkbox" type="checkbox" value="gender = 0" id="checkbox6" name="filter[gender][]" onclick='checkedInput(this);'>
+              <label class="form-check-label" for="checkbox6">
+                Male
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input checkbox" type="checkbox" value="gender = 1" id="checkbox7" name="filter[gender][]" onclick='checkedInput(this);'>
+              <label class="form-check-label" for="checkbox7">
+                Female
+              </label>
+            </div>
+          </div>
+
+        </div>
+        <%= f.submit "submit", class: "hide-button"%>
+      <% end %>
+    </div>
+
+  </div>
+  <div class="col-8">
+    <div class="row-width">
+      <div class="row">
+        <div class="col-10 mt">
+          Library
+        </div>
+        <div class="col-2 mt">
+          <%= form_with method: 'get', url: coach_library_page_path do %>
+            <input class="form-control me-2" type="text" name="search" placeholder="Search" aria-label="Search">
+          <% end %>
+        </div>
+        <div class="col-12 pading-tags"  id="filters">
+          <div id="render-block">
+          </div>
+          <button class="clear-button-tags" id="remove-tags" onclick='removeAllTags(this);'>Сlear all filters</button>
+        </div>
+        <script type="text/javascript">
+          function checkedInput(inp) {
+            let render_block = document.getElementById("render-block")
+            if(inp.checked){
+              let span = document.createElement("span")
+              span.classList.add("tags-filter")
+              span.id = inp.id + 'elem'
+              let text = document.createTextNode(inp.labels[0].innerHTML)
+              let inLable = document.createElement("label")
+              inLable.htmlFor = inp.id
+              let i = document.createElement("i")
+              i.classList.add("bi", "bi-x-circle-fill")
+              inLable.appendChild(i)
+              span.appendChild(text);
+              span.appendChild(inLable);
+              render_block.appendChild(span);
+            }
+            else {
+              document.getElementById(inp.id + 'elem').remove()
+            }
+          }
+
+          function removeAllTags(button) {
+            let filters = document.getElementById('render-block')
+            let child = filters.lastElementChild;
+            while (child) {
+              filters.removeChild(child);
+              child = filters.lastElementChild;
+            }
+            let inputs = document.getElementsByClassName('checkbox')
+            let url = document.URL.split('?')
+            for (let i = 0; i<inputs.length; i++) {
+              if (inputs[i].checked) {
+                inputs[i].checked = 0
+              }
+
+            }
+            window.history.replaceState({}, document.title, url[0]);
+          }
+          function paramsUrl() {
+            let url = document.URL.split('?')[1]
+            let searchParams = new URLSearchParams(url);
+
+            let inputs = document.getElementsByClassName('checkbox')
+            for (let i = 0; i<inputs.length; i++) {
+              if (searchParams.getAll(inputs[i].name).includes(inputs[i].value)){
+                inputs[i].checked = 1
+                checkedInput(inputs[i])
+              }
+            }
+
+
+          }
+          paramsUrl()
+        </script>
+      </div>
+
+      <div class="row">
+        <% @technigues.each do |technique|%>
+          <% if Recommendation.find_by(technique_id: technique.id, coach_id: @coach.id) %>
+            <div class="col-6 distance">
+              <div class="card h-100">
+                <div class="item">
+                  <% if technique.photo.attached? %>
+                    <img src="<%= url_for(technique.photo) %>" class= "card-img-top" alt="...">
+                  <% else %>
+                    <img src="<%= asset_path('anthony-tran-vXymirxr5ac-unsplash.jpg') %>" class="card-img-top" alt="...">
+                  <% end %>
+
+                  <% if technique.problems %>
+                    <div class="tags-div-absolute">
+                      <% technique.problems.each do |problem|%>
+                        <span class="tags-in-image "><%= problem.name%></span>
+                      <% end %>
+                    </div>
+                  <% end %>
+
+                </div>
+                <div class="card-body">
+                  <h6 class="title_card"><%= technique.title %></h6>
+
+                  <p class="description"><%= technique.description %></p>
+                  <div class="age">Age: <strong><%= technique.age %> years</strong></div>
+                  <div class="gender">Gender: <strong><%= technique.gender %></strong></div>
+                  <br>
+                  <div class="step">Steps:<strong> <%= technique.total_steps %></strong></div>
+                  <div class="duration">Duration:<strong> <%= technique.duration %></strong></div>
+                  <% if Recommendation.where(technique_id: technique.id, coach_id: @coach.id).count <= 11 %>
+                    <div class="users-count">
+                      <%= Recommendation.where(technique_id: technique.id, coach_id: @coach.id).count %> users
+                    </div>
+                  <% else %>
+                    <div class="users-count">11+ users</div>
+                  <% end %>
+                  <ul class="hr">
+                    <li><i class="bi bi-people"></i> <%= Recommendation.where(technique_id: technique.id).count%></li>
+                    <li><i class="bi bi-hand-thumbs-up"></i> <%= Rating.where(technique_id: technique.id).sum(:like)%></li>
+                    <li><i class="bi bi-hand-thumbs-down"></i> <%= Rating.where(technique_id: technique.id).sum(:dislike)%></li>
+                    <li class="start-button"><%= link_to 'SEE DETAILS', technique_detail_page_path(technique_id: technique.id),class: "get_down_link" %></li>
+                  </ul>
+                </div>
+                <br>
+              </div>
+
+            </div>
+          <% else %>
+            <div class="col-6 distance">
+              <div class="card h-100">
+                <div class="item">
+                  <span class="notify-badge"><%= technique.status.upcase if technique.status.present?  %></span>
+                  <% if technique.photo.attached? %>
+                    <img src="<%= url_for(technique.photo) %>" class= "card-img-top" alt="...">
+                  <% else %>
+                    <img src="<%= asset_path('anthony-tran-vXymirxr5ac-unsplash.jpg') %>" class="card-img-top" alt="...">
+                  <% end %>
+
+                  <% if technique.problems %>
+                    <div class="tags-div-absolute">
+                      <% technique.problems.each do |problem|%>
+                        <span class="tags-in-image "><%= problem.name%></span>
+                      <% end %>
+                    </div>
+                  <% end %>
+
+                </div>
+                <div class="card-body">
+                  <h6 class="title_card"><%= technique.title %></h6>
+
+                  <p class="description"><%= technique.description %></p>
+                  <div class="age">Age: <strong><%= technique.age %> years</strong></div>
+                  <div class="gender">Gender: <strong><%= technique.gender %></strong></div>
+                  <br>
+                  <div class="step">Steps:<strong> <%= technique.total_steps %></strong></div>
+                  <div class="duration">Duration:<strong> <%= technique.duration %></strong></div>
+                  <div class="no-recommended-technique">You have not recommended this technique to your users yet.</div>
+                  <ul class="hr">
+                    <li><i class="bi bi-people"></i> <%= Recommendation.where(technique_id: technique.id).count%></li>
+                    <li><i class="bi bi-hand-thumbs-up"></i> <%= Rating.where(technique_id: technique.id).sum(:like)%></li>
+                    <li><i class="bi bi-hand-thumbs-down"></i> <%= Rating.where(technique_id: technique.id).sum(:dislike)%></li>
+                    <li class="start-button"><%= link_to 'SEE DETAILS', technique_detail_page_path(technique_id: technique.id),class: "get_down_link" %></li>
+                  </ul>
+                </div>
+                <br>
+              </div>
+
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<% end %>
+<%= render template: "coach/show" %>

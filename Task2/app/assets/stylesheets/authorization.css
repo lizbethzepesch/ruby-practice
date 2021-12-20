@@ -1,0 +1,54 @@
+.container {
+  width: 100%;
+  padding-left: 83px;
+  padding-right: 83px;
+  padding-top: 100px;
+  padding-bottom: 83px;
+  background: white;
+}
+
+.sign-in-title {
+  color: #000000DE;
+  font-size: 34px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.icon-color {
+  color: #000000;
+  outline: none;
+  border: none;
+  background: white;
+  padding: 0px;
+  margin: 0px;
+  display: inline-block;
+}
+
+
+.form-authorization {
+  margin: 0px auto;
+
+  width: 30%;
+  padding-top: 20px;
+}
+
+.before-submit {
+  width: 100%;
+  font-size: 16px;
+}
+
+.check-box-block {
+  display: inline-block;
+  width: 49.6%;
+}
+
+.forgot-password-block {
+  width: 49%;
+  float: right;
+  text-align: right;
+}
+
+.forgot-password-link {
+  color: #000000DE;
+  text-decoration: none;
+}

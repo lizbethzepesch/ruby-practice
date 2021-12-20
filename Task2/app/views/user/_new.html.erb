@@ -1,0 +1,54 @@
+
+<div class="modal-body">
+
+    <div class="card-body">
+      <div class="avatar">
+        <div class="icon-link">
+          <i class="bi bi-facebook"></i>
+        </div>
+        <div class="image-avatar">
+          <% if @coach.avatar.attached? %>
+            <img src="<%= url_for(@coach.avatar) %>" class= "invite-avatar rounded-circle ">
+          <% else %>
+            <img src="<%= asset_path('generic-user-icon-10.png') %>" class="img-fluid rounded-circle mb-3">
+          <% end %>
+        </div>
+        <div class="icon-link">
+          <i class="bi bi-linkedin"></i>
+        </div>
+      </div>
+      <br>
+      <h6 class="coach-name"><%= @coach.name %></h6>
+      <p class="status">Current coach</p>
+
+      <% if @coach.about %>
+        <p class="coach-info"><%= @coach.about %></p>
+      <% else %>
+        <p class="coach-info">No information about.</p>
+      <% end %>
+<!--
+      <p class="coach-info">I know how to help you overcome Depression and Anxiety. I know modern techniques that
+        work.</p> -->
+      <p class="coach-info"><%= @coach.age %> years | <%= @coach.gender %> | <%= Invitation.where(coach_id: @coach.id).count%> users</p>
+      <p class="tages-info">Areas of Expertise</p>
+      <% @coach.problems.each do |coach_problem|%>
+        <span class="tags"><%= coach_problem.name %></span>
+      <% end %>
+      <p class="tages-info">Education</p>
+      <p class="education-data"><%= @coach.education %></p>
+      <p class="tages-info">Work experience</p>
+      <p class="education-data"><%= @coach.experience %></p>
+      <p class="tages-info">Licenses and Certificates</p>
+      <p class="education-data"><%= @coach.licenses %></p>
+      <br>
+      <% if @invite == nil %>
+        <div class="send-an-inv"><%= button_to 'SEND AN INVITATION', class: "get_down_link" %></div>
+      <% else %>
+
+        <hr>
+        <div class="date-info">You cannot invite a coach.</div>
+        <div class="date-info">First, complete the cooperation with your current coach.</div>
+      <% end %>
+    </div>
+
+</div>

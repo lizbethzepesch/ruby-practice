@@ -1,0 +1,30 @@
+    <nav class="navbar navbar-expand-lg nav_background fixed-top">
+      <div class="container-fluid pad">
+        <a class="navbar-brand logo logo-button" href="#">Logo</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
+    <div class="conteiner">
+        <h4 class="reset-title">Create new password</h4>
+        <p class="help-text">Your new password must contain at least 8 characters,</p>
+        <p class="help-text">include a number and lowercase letter</p>
+        <%= form_with model: @coach, class: "form-registration", url: reset_password_coach_edit_path(token: params[:token]) do |f| %>
+          <div class="form-group" data-controller="password-toggle">
+            <%= f.label :password, class: "labels" %>
+            <%= f.password_field :password, class: "field unhide", autocomplete: "current-password", "data-target": "password-toggle.unhide" %>
+            <span data-action="click->password-toggle#password" class="password-field-icon-1 position far bi bi-eye-slash"></span>
+          </div>
+          <br>
+
+          <div class="form-group" data-controller="password-toggle">
+            <%= f.label :password_confirmation, class: "labels" %>
+              <%= f.password_field :password_confirmation, class: "field unhide", autocomplete: "current-password", "data-target": "password-toggle.unhide" %>
+              <span data-action="click->password-toggle#password" class="password-field-icon-1 position far bi bi-eye-slash"></span>
+          </div>
+          <br>
+          <%= f.submit 'SAVE CHANGES', class: "btn btn-sing-up marge-top" %>
+        <% end %>
+
+    </div>

@@ -1,0 +1,139 @@
+<% content_for :content do %>
+
+<h6>
+  <%= link_to "Cancel", coach_page_path(@coach.id), class: "bi bi-chevron-left link-back" %>
+</h6>
+<div class="personal-block-h">
+  <h5 class="personal-info">Personal information</h5>
+</div>
+<%= form_with multipart: true, model: @coach, class: "form-update", url: update_profile_coach_path do |f| %>
+  <div class="image-input-coach">
+    <% if @coach.avatar.attached? %>
+      <img src="<%= url_for(@coach.avatar) %>" class= "rounded-circle" id="output">
+    <% else %>
+      <img src="<%= asset_path('png-clipart-graphy-camera-camera-rectangle-photography.png') %>" class="rounded-circle" id="output">
+    <% end %>
+    <label for="avatar">
+      <h4 class="upload">Upload profile photo</h4>
+      <p class="upload-text">Image format should be png, jpg</p>
+      <p class="upload-text">no more than 5 Mb</p>
+    </label>
+    <input type="file" accept="image/*" name="coach[avatar]" id="avatar" onchange="loadFile(event)">
+    <script>
+      var loadFile = function(event) {
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.onload = function() {
+          URL.revokeObjectURL(output.src) // free memory
+        }
+      };
+    </script>
+  </div>
+  <br>
+  <div class="form-group">
+    <%= f.label 'Full name', class: "labels" %>
+    <%= f.text_field :name, class: "field form-control" %>
+  </div>
+  <br>
+  <div class="form-group">
+    <%= f.label 'E-mail', class: "labels" %>
+    <%= f.text_field :email, class: "field form-control" %>
+  </div>
+  <br>
+  <div class="form-group">
+    <%= f.label 'Age', class: "labels" %>
+    <%= f.text_field :age, class: "field form-control" %>
+  </div>
+  <br>
+  <label class="labels">Gender</label>
+  <div class="sign_for_gender">
+      <label class="link_for_gender male" for="male">
+        <input type="radio" class="female" name="coach[gender]" id="male" value="male" checked>
+        <p class="margin-none">MALE</p>
+      </label>
+      <label class="link_for_gender female" for="female">
+        <input type="radio" class="female" name="coach[gender]" id="female" value="female">
+        <p class="margin-none">FEMALE</p>
+      </label>
+  </div>
+  <br>
+  <div class="form-group">
+    <label class="labels" for="tags">Areas of expertise</label>
+    <select class="form-control select2-multi" name="coach[problems][]" multiple="multiple">
+      <% @problems.each do |data|%>
+          <option value="<%= data[:name]%>"><%= data[:name] %></option>
+      <% end %>
+    </select>
+  </div>
+  <br>
+  <script>
+      $('.select2-multi').select2();
+  </script>
+  <div class="form-group">
+    <%= f.label 'Education', class: "labels" %>
+    <%= f.text_field :education, class: "field form-control" %>
+    <p class="after-input">Name of educational institution, specialty, degree</p>
+  </div>
+  <div class="add-block">
+    <img class="rounded-circle" src="<%= asset_path('add_button.png') %>">
+    <label>Add another</label>
+  </div>
+  <br>
+
+  <div class="form-group">
+    <%= f.label 'Work experience', class: "labels" %>
+    <%= f.text_field :experience, class: "field form-control" %>
+    <p class="after-input">Position, company, work experience</p>
+  </div>
+  <div class="add-block">
+    <img class="rounded-circle" src="<%= asset_path('add_button.png') %>">
+    <label>Add another</label>
+  </div>
+  <br>
+
+  <div class="form-group">
+    <%= f.label 'Licenses and certificates', class: "labels" %>
+    <%= f.text_field :licenses, class: "field form-control" %>
+    <p class="after-input">Name, issuer, date of issue</p>
+  </div>
+  <div class="add-block">
+    <img class="rounded-circle" src="<%= asset_path('add_button.png') %>">
+    <label>Add another</label>
+  </div>
+  <br>
+
+  <div class="form-group" id="networks-block">
+    <label for="social_network" class="labels">Link on social networks</label>
+    <input type="text" class="field form-control" name="coach[social_networks][]" id="social_network">
+    <p class="after-input">E.g., facebook, linkedin, etc.</p>
+  </div>
+  <div class="add-block">
+    <img class="rounded-circle" src="<%= asset_path('add_button.png') %>" onclick="addInput()">
+    <label>Add another</label>
+  </div>
+  <br>
+  <div class="form-group">
+    <%= f.label 'Tell something about yourself if you wants', class: "labels" %>
+    <%= f.text_area :about, class: "field form-control" %>
+    <p class="after-input">This information will help the user to learn more about you and your expertise</p>
+  </div>
+  <br>
+  <script type="text/javascript">
+    function addInput() {
+      let block = document.getElementById('networks-block')
+      let input = document.createElement("input")
+      let p = document.createElement("p")
+      let text = document.createTextNode("E.g., facebook, linkedin, etc.")
+      input.classList.add("field", "form-control")
+      input.name = "coach[social_networks][]"
+      p.classList.add("after-input", "marge_text")
+      block.appendChild(input)
+      block.appendChild(p)
+      p.appendChild(text)
+    }
+  </script>
+  <%= f.submit 'SAVE CHANGES', class: "btn btn-sing-up marge-top"%>
+<% end %>
+
+<% end %>
+<%= render template: "coach/show" %>

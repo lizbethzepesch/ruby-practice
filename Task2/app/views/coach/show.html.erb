@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+  </symbol>
+  <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+  </symbol>
+  <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+  </symbol>
+</svg>
+  <nav class="navbar navbar-expand-lg nav_background fixed-top">
+    <div class="container-fluid pad">
+      <a class="navbar-brand logo logo-button" href="#">Logo</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <%= link_to 'Dashboard', coach_dashboard_page_path, class: "nav-link nav-link-style"%>
+          <%= link_to 'My users', coach_users_page_path, class: "nav-link nav-link-style"%>
+          <%= link_to 'Library', coach_library_page_path, class: "nav-link nav-link-style"%>
+        </div>
+      </div>
+      <div class="d-flex">
+        <div class="envelope-block"><i class="bi bi-envelope"></i></div>
+
+        <div class="bell-block">
+          <i class="bi bi-bell" ></i>
+
+        </div>
+        <div class="me-3 dropdown">
+          <% if @coach.avatar.attached? %>
+            <img src="<%= url_for(@coach.avatar) %>" class= "rounded-circle size-image" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+          <% else %>
+            <img src="<%= asset_path('sydney-sims-fZ2hMpHIrbI-unsplash.jpg') %>" class="rounded-circle size-image" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+          <% end %>
+          <ul class="dropdown-menu">
+            <li><%= link_to 'Edit Personal Information', update_profile_coach_path, class: "dropdown-item" %></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><%= link_to 'Change Password', password_change_coach_path, class: "dropdown-item" %></li>
+          </ul>
+        </div>
+        <%= button_to 'LOG OUT', logout_coach_path, method: :delete, class: "btn btn-sing-in" %>
+      </div>
+    </div>
+  </nav>
+
+  <div class="content-block">
+    <% flash.each do |type, msg| %>
+      <% if type == 'warning' %>
+        <div class="alert alert-warning d-flex alert-dismissible fade show warning-color" role="alert">
+          <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+          <div><%= msg %></div>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <% elsif type == 'info' %>
+        <div class="alert alert-primary  d-flex alert-dismissible fade show warning-color" role="alert">
+          <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
+          <div><%= msg %></div>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <% else %>
+        <div class="alert alert-danger  d-flex alert-dismissible fade show warning-color" role="alert">
+          <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+          <div><%= msg %></div>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <% end %>
+    <% end %>
+
+    <%= content_for?(:content) ? yield(:content) : yield %>
+
+
+  </div>

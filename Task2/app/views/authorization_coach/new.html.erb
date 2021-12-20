@@ -1,0 +1,68 @@
+
+    <%= stylesheet_link_tag 'authorization.css' %>
+    <%= stylesheet_link_tag 'landing.css' %>
+    <%= stylesheet_link_tag 'registrations.css' %>
+    <nav class="navbar navbar-expand-lg nav_background fixed-top">
+      <div class="container-fluid pad">
+        <a class="navbar-brand logo logo-button" href="#">Logo</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
+    <div class="container">
+      <h4 class="sign-in-title">Sign into your account</h4>
+      <div class="sign_in">
+        <div class="ask">Don't have an account?</div>
+        <div class="link"><%= link_to 'Sign up', become_coach_path, class: "custom"%></div>
+      </div>
+
+      <% if alert %>
+        <p class="alert"><%= alert%></p>
+      <% end %>
+
+      <%= form_with class: "form-authorization", url: sign_in_coach_path do |f| %>
+
+        <div class="form-group">
+          <%= f.label 'Email', class: "labels" %>
+          <%= f.text_field :email, class: "field form-control #{'is-invalid' if flash[:email]}" %>
+          <% if flash[:email] %>
+            <div class="invalid-feedback d-block">
+              <%= flash[:email] %>.
+            </div>
+          <% end %>
+        </div>
+        <br>
+
+
+        <div class="form-group" data-controller="password-toggle">
+          <%= f.label :password, class: "labels" %>
+          <%= f.password_field :password, class: "field unhide", autocomplete: "current-password", "data-target": "password-toggle.unhide" %>
+          <span data-action="click->password-toggle#password" class="password-field-icon-1 position far bi bi-eye-slash"></span>
+        </div>
+        <br>
+
+        <div class="before-submit">
+          <div class="check-box-block">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label font" for="flexCheckDefault"> Remember me</label>
+          </div>
+          <div class="forgot-password-block">
+            <strong><%= link_to 'Forgot password?', reset_password_coach_new_path, class: "forgot-password-link"%></strong>
+          </div>
+        </div>
+
+        <%= f.submit 'GET STARTED', class: "btn btn-sing-up marge-top" %>
+
+        <div class="sign-with">
+          <div class="with">
+            or Sign in with
+          </div>
+          <div class="badge-with">
+            <i class="bi bi-facebook"></i>
+            <i class="bi bi-google"></i>
+          </div>
+        </div>
+      <% end %>
+
+    </div>

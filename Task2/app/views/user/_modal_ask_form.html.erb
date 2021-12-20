@@ -1,0 +1,20 @@
+<div class="modal-header">
+  <% if @coach.avatar.attached? %>
+    <img src="<%= url_for(@coach.avatar) %>" class= "modal-avatar-size  rounded-circle">
+  <% else %>
+    <img src="<%= asset_path('generic-user-icon-10.png') %>" class="modal-avatar-size  rounded-circle">
+  <% end %>
+  <h5 class="modal-title m-left"><%= @coach.name %></h5>
+  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body">
+  <p class="modal-message">Are you sure you want to end cooperation </p>
+  <p class="modal-message">with this coach?</p>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCEL</button>
+  <!-- <button type="button" class="btn btn-dark">YES, I WANT</button> -->
+  
+  <%= link_to 'YES, I WANT',  end_cooperation_coach_invite_path(@invite.id), method: :delete, class: "btn btn-dark"%>
+
+ </div>

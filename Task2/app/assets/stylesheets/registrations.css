@@ -1,0 +1,320 @@
+
+.conteiner {
+    width: 100%;
+    margin: 0px;
+    padding-left: 83px;
+    padding-right: 83px;
+    padding-top: 130px;
+    padding-bottom: 83px;
+    background: white;
+}
+
+
+.create {
+  text-align: center;
+  font-size: 34px;
+  color: #000000DE;
+}
+
+.sign_in {
+  color: #000000DE;
+  font-size: 15px;
+  text-align: center;
+}
+
+.ask {
+  display: inline-block;
+  padding: 5px;
+}
+
+.link {
+  padding: 5px;
+  display: inline-block;
+}
+
+.custom {
+  text-decoration: none;
+  font-weight:bold;
+  color: #000000DE;
+}
+
+.sign_for {
+  margin: 0 auto;
+  width: 100%;
+  color: #000000DE;
+  border: 1px solid #6C757D;
+  border-radius: 5px;
+  background: #E9ECEF;
+  text-align: center;
+}
+
+.sign-with {
+  margin: 0 auto;
+  text-align: center;
+  padding: 20px;
+}
+
+.with {
+  display: inline-block;
+  font-size: 14px;
+  color: #000000DE;
+  padding-right: 10px;
+}
+
+.badge-with {
+  display: inline-block;
+  font-size: 26px;
+}
+.link_for {
+  display: inline-block;
+  width: 49.4%;
+  padding: 10px;
+  font-size: 14px;
+  text-decoration: none;
+  color: #000000DE;
+}
+
+.marge-top {
+  margin-top: 20px;
+}
+
+.active {
+  background: #6C757D;
+  color: #FFFFFF;
+}
+
+.form-registration {
+  margin: 0px auto;
+
+  width: 28%;
+  padding-top: 20px;
+}
+
+.labels {
+  font-size: 16px;
+  padding: 5px;
+  line-break: normal;
+}
+
+.field {
+
+  width: 100%;
+  border: 1px solid #000000C7;
+  border-radius: 5px;
+  padding: 12px;
+  color: #707070;
+  /* opacity: 0.6; */
+  font-size: 20px;
+
+}
+
+
+.btn-sing-up {
+  font-family: Roboto, Ligth;
+  color: #FFFFFF;
+  border-color: rgba(173, 181, 189, 1);
+  background: #212529;
+  width: 100%;
+
+}
+
+
+
+.font {
+  font-size: 16px;
+}
+
+.position {
+  position: absolute;
+  left: 59%;
+  color: #495057;
+  font-size: 20px;
+  padding: 12px;
+}
+
+.link-back {
+  font-size: 20px;
+  text-decoration: none;
+  color: #000000DE;
+  border: none;
+  background: white;
+
+}
+
+.mail-icon {
+  padding-top: 60px;
+  padding-bottom: 15px;
+  text-align: center;
+  color: #212529;
+  font-size: 50px;
+}
+
+.verify {
+  margin: 0;
+  color: #000000DE;
+  font-size: 34px;
+  text-align: center;
+  padding-bottom: 15px;
+}
+
+.verify-text {
+  text-align: center;
+  margin: 0 auto;
+  font-size: 16px;
+  color: #000000DE;
+}
+
+.resend-link {
+  text-decoration: none;
+  color: #000000DE;
+}
+
+.input-block {
+  margin: 0 auto;
+  width: 60%;
+  text-align: center;
+}
+
+.input-code {
+  outline: none;
+  border: none;
+  text-align: center;
+  border-bottom: 1px solid gray;
+  color: #000000DE;
+
+}
+
+.alert {
+  text-align: center;
+  color: red;
+  opacity: 0.7;
+  margin: 0;
+}
+
+.image-input {
+  width: 100%;
+  padding: 5px;
+}
+
+.image-input input {
+  display: none;
+
+}
+
+.image-input img {
+  display: inline-block;
+  width: 65px;
+  height: 65px;
+  background-color: white;
+
+  position: absolute;
+}
+
+.image-input label {
+  width: 60%;
+  margin-left: 20%;
+  padding: 10px;
+
+}
+
+.upload {
+  font-size: 16px;
+  color: #000000DE;
+}
+
+.upload-text {
+  font-size: 12px;
+  margin: 0px;
+}
+
+input[type="radio"] {
+  opacity: 0;
+  position: absolute;
+}
+
+input[class="female"]:hover + p,
+input[class="female"]:checked + p,
+input[class="female"]:focus + p {
+  background: #6C757D;
+  color: #FFFFFF;
+  height: 100%;
+  padding: 15px;
+}
+
+
+input[class="male"]:hover + p,
+input[class="male"]:checked + p,
+input[class="male"]:focus + p {
+  background: #6C757D;
+  color: #FFFFFF;
+  height: 100%;
+  padding: 15px;
+}
+
+.margin-none {
+  margin-bottom: 0px;
+}
+
+.link_for_gender {
+  color: #000000DE;
+  text-decoration: none;
+  display: inline-block;
+  width: 49.4%;
+  font-size: 14px;
+   position: relative;
+   margin: 0px;
+}
+
+.sign_for_gender {
+  margin: 0 auto;
+  width: 100%;
+  color: #000000DE;
+  border: 1px solid #6C757D;
+  border-radius: 5px;
+  background: #E9ECEF;
+  text-align: center;
+}
+
+.after-input {
+  margin: 0px;
+  color: #00000099;
+  font-size: 12px;
+  padding-left: 10px;
+  padding-top: 4px;
+}
+
+
+.add-block {
+  width: 100%;
+  padding-top: 7px;
+  padding-left: 0px;
+  padding-right: 0px;
+  border: none;
+  outline: none;
+  background: white;
+  text-align: left;
+}
+
+.add-block img {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  background-color: white;
+
+  position: absolute;
+}
+
+.add-block label {
+  width: 60%;
+  margin-left: 12%;
+  padding: 5px;
+  color: #000000DE;
+  opacity: 0.6;
+  font-size: 16px;
+  font-weight: bold;
+
+}
+
+.marge_text {
+  margin-bottom: 10px;
+}

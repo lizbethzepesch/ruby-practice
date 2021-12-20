@@ -1,0 +1,18 @@
+
+<div class="modal-header">
+  <h5 class="modal-title">Recommend to your users</h5>
+  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body">
+  <%= form_with url: recommend_to_users_page_path do |f| %>
+    <% @users.each do |user|%>
+        <%= f.check_box :users,  {:multiple => true}, user.user.name, '' %>
+        <%= f.label :users, user.user.name %>
+        <br>
+    <% end %>
+    <br>
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCEL</button>
+    <%= f.submit "SEND", class: "btn btn-send"%>
+  <% end %>
+
+</div>

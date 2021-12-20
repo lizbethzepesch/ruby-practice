@@ -1,0 +1,20 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900italic,900' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <div style="background: rgba(73, 80, 87, 1); margin: 0px;">
+      <div style="color: white; padding: 20px; font-size: 30px; font-family: Roboto, Regular;">Mental Clinic inc.</div>
+    </div>
+    <div style="padding-left: 50px; padding-right: 50px; padding-top: 20px;">
+      <p style="font-family: Roboto, Regular; font-size: 20px; color: #000000de; text-decoration: none;">Hi <%= params[:user].email %>,</p>
+      <hr>
+      <p style="font-family: Roboto, Regular; font-size: 20px; color: #000000de;">Someone requested a password reset.</p>
+      <p style="font-family: Roboto, Regular; font-size: 20px; color: #000000de;">Click the link above if you recognise the activity, link expires in 15 minutes.</p>
+      <p style=" font-size: 20px;"><%= link_to 'Reset Password', reset_password_edit_url(token: @token) %><p>
+    </div>
+  <body>
+</html>

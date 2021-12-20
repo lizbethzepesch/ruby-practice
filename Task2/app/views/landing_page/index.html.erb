@@ -1,0 +1,419 @@
+<%= stylesheet_link_tag 'landing.css' %>
+<nav class="navbar navbar-expand-lg nav_background fixed-top">
+  <div class="container-fluid pad">
+    <a class="navbar-brand logo logo-button" href="#">Logo</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link nav-link-style" aria-current="page" href="#content-two">How it work?</a>
+        <a class="nav-link nav-link-style" href="#content-techniques">Techniques</a>
+        <a class="nav-link nav-link-style" href="#content-coaches">Coaches</a>
+      </div>
+    </div>
+    <div class="d-flex">
+      <%= link_to "SIGN IN", sign_in_path, class: "btn btn-sing-in" %>
+    </div>
+  </div>
+</nav>
+<div class="content">
+  <div class="row">
+    <div class="col-6">
+      <div class="text">Coaching WEB platform</div>
+      <div class="text-after">where coaches help users to deal with anxiety and depression</div>
+      <%= link_to "JOIN US", sign_up_path, class: "btn btn-join-us" %>
+    </div>
+    <div class="col-6">
+      <img src="<%= asset_path('sydney-sims-fZ2hMpHIrbI-unsplash.jpg') %>">
+    </div>
+  </div>
+
+  <div class="row marg">
+    <div class="col-4">
+      <div class="stats-data">151</div>
+    </div>
+    <div class="col-4">
+      <div class="stats-data">50</div>
+    </div>
+    <div class="col-4">
+      <div class="stats-data">356</div>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="row">
+    <div class="col-4">
+      <div class="stats-field">Effective techniques</div>
+    </div>
+    <div class="col-4">
+      <div class="stats-field">Qualified coaches</div>
+    </div>
+    <div class="col-4">
+      <div class="stats-field">Satisfied users</div>
+    </div>
+  </div>
+</div>
+
+<a name="content-two">
+  <div class="content-two">
+    <h3>How it work?</h3>
+    <div class="row">
+      <div class="col-6">
+        <div class="colum-users-coaches">
+          For users
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="colum-users-coaches">
+          For coaches
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <div class="row-width">
+          <div class="row box">
+            <div class="col-2 number-size">
+              1
+            </div>
+            <div class="col-10">
+              <div class="text-col-10"> You can choose the coach with whom you will be most comfortable working.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="row-width">
+          <div class="row box">
+            <div class="col-2 number-size">
+              1
+            </div>
+            <div class="col-10">
+              <div class="text-col-10"> You can choose the coach with whom you will be most comfortable working.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-6">
+        <div class="row-width">
+          <div class="row box">
+            <div class="col-2 number-size">
+              2
+            </div>
+            <div class="col-10">
+              <div class="text-col-10"> Your coach will make a program for you using the best psychotherapy techniques
+                available today.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="row-width">
+          <div class="row box">
+            <div class="col-2 number-size">
+              2
+            </div>
+            <div class="col-10">
+              <div class="text-col-10"> We have all the most modern and latest techniques in the field of psychotherapy for
+                you and your users.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-6">
+        <div class="row-width">
+          <div class="row box">
+            <div class="col-2 number-size">
+              3
+            </div>
+            <div class="col-10">
+              <div class="text-col-10">Your coach will support you in personal communication throughout the program and
+                you will see real progress and feel better!</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="row-width">
+          <div class="row box">
+            <div class="col-2 number-size">
+              3
+            </div>
+            <div class="col-10">
+              <div class="text-col-10">You can get real practice as a psychotherapist, observing the progress of your work
+                with various problems of users online.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</a>
+
+<a name="content-techniques">
+  <div class="content-techniques">
+    <div class="title">Techniques</div>
+    <div class="about-techniques">Our service offers the best techniques for our users</div>
+    <br>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col">
+        <div class="card h-100">
+          <div class="item">
+            <span class="notify-badge">NEW</span>
+            <img src="<%= asset_path('anthony-tran-vXymirxr5ac-unsplash.jpg') %>" class="card-img-top" alt="...">
+            <span class="tag-badge">Depression</span>
+          </div>
+          <div class="card-body">
+            <h6 class="title_card">Cognitive - Behavioral Therapy</h6>
+            <p class="description">Elimination of the dependence of emotions and human behavior on his thoughts.</p>
+            <div class="age">Age: <strong>25-35 years</strong></div>
+            <div class="gender">Gender:<strong> Male, Female</strong></div>
+            <br>
+            <div class="step">Steps: <strong>4</strong></div>
+            <div class="duration">Duration: <strong>6-7 hours</strong></div>
+            <ul class="hr">
+              <li><i class="bi bi-people"></i> 235</li>
+              <li><i class="bi bi-hand-thumbs-up"></i> 124</li>
+              <li><i class="bi bi-hand-thumbs-down"></i> 12</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <div class="item">
+            <span class="notify-badge">POPULAR</span>
+            <img src="<%= asset_path('kristina-tripkovic-nwWUBsW6ud4-unsplash.jpg') %>" class="card-img-top" alt="...">
+            <span class="tag-badge">Depression</span>
+            <span class="tag-badge-second">Anxiety</span>
+          </div>
+          <div class="card-body">
+            <h6 class="title_card">Lifestyle changes</h6>
+            <p class="description">Eliminating the lack of control that makes people feel worse.</p>
+            <div class="age">Age: 35-40 years</div>
+            <div class="gender">Gender: Male, Female</div>
+            <br>
+            <div class="step">Steps: 4</div>
+            <div class="duration">Duration: 5 hours</div>
+            <ul class="hr">
+              <li><i class="bi bi-people"></i> 311</li>
+              <li><i class="bi bi-hand-thumbs-up"></i> 214</li>
+              <li><i class="bi bi-hand-thumbs-down"></i> 34</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <div class="item">
+            <span class="notify-badge">RECOMMENDED</span>
+            <img src="<%= asset_path('stefano-pollio-ZC0EbdLC8G0-unsplash.jpg') %>" class="card-img-top" alt="...">
+            <span class="tag-badge">Depression</span>
+          </div>
+          <div class="card-body">
+            <h6 class="title_card">Inflammation and mood</h6>
+            <p class="description">Does a dysfunctional immune system cause inflammation in the body, leading to mood
+              swings?</p>
+            <div class="age">Age: 35-40 years</div>
+            <div class="gender">Gender: Male, Female</div>
+            <br>
+            <div class="step">Steps: 4</div>
+            <div class="duration">Duration: 5 hours</div>
+            <ul class="hr">
+              <li><i class="bi bi-people"></i>311</li>
+              <li><i class="bi bi-hand-thumbs-up"></i>214</li>
+              <li><i class="bi bi-hand-thumbs-down"></i>34</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="about-techniques">Do you want to let go of your worries and fears?</div>
+    <br>
+    <div class="center">
+      <!-- <button class="btn btn-join-us-center">JOIN US</button> -->
+      <%= link_to "JOIN US", sign_up_path, class: "btn btn-join-us-center" %>
+
+    </div>
+  </div>
+</a>
+<a name="content-coaches">
+  <div class="content-coaches">
+    <div class="title">Coaches</div>
+    <div class="about-techniques">Ability to choose the coach, who will select each user technique individually</div>
+    <br>
+    <div class="row">
+      <div class="col-4">
+        <div class="card">
+          <div class="card-body">
+            <div class="avatar">
+              <div class="icon-link">
+                <i class="bi bi-facebook"></i>
+              </div>
+              <div class="image-avatar">
+                <img src="https://bootstrapious.com/i/snippets/sn-team/teacher-1.jpg" class="img-fluid rounded-circle mb-3">
+              </div>
+              <div class="icon-link">
+                <i class="bi bi-linkedin"></i>
+              </div>
+            </div>
+            <h6 class="coach-name">James Brown</h6>
+            <p class="status">Current coach</p>
+            <p class="coach-info">I know how to help you overcome Depression and Anxiety. I know modern techniques that
+              work.</p>
+            <p class="coach-info">36 years | Male | 27 users</p>
+            <p class="tages-info">Areas of Expertise</p>
+            <span class="tags">Depression</span>
+            <span class="tags">Anxiety</span>
+            <p class="tages-info">Education</p>
+            <p class="education-data">New York University, PhD in Psychology</p>
+            <p class="tages-info">Work experience</p>
+            <p class="education-data">Psychologist, ABC company, 12 years</p>
+            <p class="tages-info">Licenses and Certificates</p>
+            <p class="education-data">New York / 081109, New York University, 2009</p>
+            <br>
+            <div class="send-an-inv">SEND AN INVITATION</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-8">
+        <div class="row">
+          <div class="col-6">
+            <div class="card">
+              <div class="body">
+                <div class="small-card">
+                  <div class="image-avatar-small">
+                    <img src="<%= asset_path('download.jpg') %>" class="img-fluid rounded-circle mb-3">
+                  </div>
+                  <div class="name-coach">
+                    <span class="coach-name">Amelia Adamson</span><br>
+                    <span class="status">Coach</span>
+                    <p class="coach-info-left">36 years | Male | 27 users</p>
+                    <p class="tages-info">Areas of Expertise</p>
+                    <span class="tags">Depression</span>
+                    <span class="tags">Anxiety</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br>
+          </div>
+          <div class="col-6">
+            <div class="card">
+              <div class="body">
+                <div class="small-card">
+                  <div class="image-avatar-small">
+                    <img src="<%= asset_path('download.jpg') %>" class="img-fluid rounded-circle mb-3">
+                  </div>
+                  <div class="name-coach">
+                    <span class="coach-name">Amelia Adamson</span><br>
+                    <span class="status">Coach</span>
+                    <p class="coach-info-left">36 years | Male | 27 users</p>
+                    <p class="tages-info">Areas of Expertise</p>
+                    <span class="tags">Depression</span>
+                    <span class="tags">Anxiety</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card">
+              <div class="body">
+                <div class="small-card">
+                  <div class="image-avatar-small">
+                    <img src="<%= asset_path('download.jpg') %>" class="img-fluid rounded-circle mb-3">
+                  </div>
+                  <div class="name-coach">
+                    <span class="coach-name">Amelia Adamson</span><br>
+                    <span class="status">Coach</span>
+                    <p class="coach-info-left">36 years | Male | 27 users</p>
+                    <p class="tages-info">Areas of Expertise</p>
+                    <span class="tags">Depression</span>
+                    <span class="tags">Anxiety</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card">
+              <div class="body">
+                <div class="small-card">
+                  <div class="image-avatar-small">
+                    <img src="<%= asset_path('download.jpg') %>" class="img-fluid rounded-circle mb-3">
+                  </div>
+                  <div class="name-coach">
+                    <span class="coach-name">Amelia Adamson</span><br>
+                    <span class="status">Coach</span>
+                    <p class="coach-info-left">36 years | Male | 27 users</p>
+                    <p class="tages-info">Areas of Expertise</p>
+                    <span class="tags">Depression</span>
+                    <span class="tags">Anxiety</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br>
+          </div>
+          <div class="col-6">
+            <div class="card">
+              <div class="body">
+                <div class="small-card">
+                  <div class="image-avatar-small">
+                    <img src="<%= asset_path('download.jpg') %>" class="img-fluid rounded-circle mb-3">
+                  </div>
+                  <div class="name-coach">
+                    <span class="coach-name">Amelia Adamson</span><br>
+                    <span class="status">Coach</span>
+                    <p class="coach-info-left">36 years | Male | 27 users</p>
+                    <p class="tages-info">Areas of Expertise</p>
+                    <span class="tags">Depression</span>
+                    <span class="tags">Anxiety</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card">
+              <div class="body">
+                <div class="small-card">
+                  <div class="image-avatar-small">
+                    <img src="<%= asset_path('download.jpg') %>" class="img-fluid rounded-circle mb-3">
+                  </div>
+                  <div class="name-coach">
+                    <span class="coach-name">Amelia Adamson</span><br>
+                    <span class="status">Coach</span>
+                    <p class="coach-info-left">36 years | Male | 27 users</p>
+                    <p class="tages-info">Areas of Expertise</p>
+                    <span class="tags">Depression</span>
+                    <span class="tags">Anxiety</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+    <div class="about-techniques">Do you want to help people?</div>
+    <div class="about-techniques"> Do you have experience and skills in psychotherapy?</div>
+    <br>
+    <div class="center">
+      <!-- <button class="btn btn-join-us-center">BECOME COACH</button> -->
+      <%= link_to "BECOME COACH", become_coach_path, class: "btn btn-join-us-center" %>
+    </div>
+  </div>
+</a>

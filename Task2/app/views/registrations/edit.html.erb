@@ -1,0 +1,69 @@
+
+    <nav class="navbar navbar-expand-lg nav_background fixed-top">
+      <div class="container-fluid pad">
+        <a class="navbar-brand logo logo-button" href="#">Logo</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button> 
+      </div>
+    </nav>
+    <div class="conteiner">
+      <h4 class="wait-title">Hello, <strong><%= @user.name %></strong>!</h4>
+      <p class="help-text">You have registered as a User in our system.</p>
+      <p class="help-text">Please, share some personal information about you so that we can</p>
+      <p class="help-text">personalize your onboarding experience</p>
+      <%= form_with multipart: true, model: @user, class: "form-registration", url: sign_up_verification_path do |f| %>
+        <div class="image-input">
+          <img class="rounded-circle" id="output" src="<%= asset_path('png-clipart-graphy-camera-camera-rectangle-photography.png') %>"/>
+          <label for="avatar">
+            <h4 class="upload">Upload profile photo</h4>
+            <p class="upload-text">Image format should be png, jpg</p>
+            <p class="upload-text">no more than 5 Mb</p>
+          </label>
+          <input type="file" accept="image/*" name="user[avatar_user]" id="avatar" onchange="loadFile(event)">
+          <script>
+            var loadFile = function(event) {
+              var output = document.getElementById('output');
+              output.src = URL.createObjectURL(event.target.files[0]);
+              output.onload = function() {
+                URL.revokeObjectURL(output.src) // free memory
+              }
+            };
+          </script>
+        </div>
+        <div class="form-group">
+          <%= f.label 'Age', class: "labels" %>
+          <%= f.text_field :age, class: "field form-control" %>
+        </div>
+        <br>
+
+        <label class="labels">Gender</label>
+        <div class="sign_for_gender">
+              <label class="link_for_gender male" for="male">
+                <input type="radio" class="female" name="user[gender]" id="male" value="male">
+                <p class="margin-none">MALE</p>
+              </label>
+
+
+              <label class="link_for_gender female" for="female">
+                <input type="radio" class="female" name="user[gender]" id="female" value="female" checked>
+                <p class="margin-none">FEMALE</p>
+              </label>
+        </div>
+        <br>
+        <div class="form-group">
+          <label class="labels" for="tags">What problem would you like to solve?</label>
+          <select class="form-control select2-multi" name="user[problems][]" multiple="multiple">
+            <% @problems.each do |data|%>
+                <option value="<%= data[:name]%>"><%= data[:name] %></option>
+            <% end %>
+          </select>
+        </div>
+        <br>
+        <script>
+            $('.select2-multi').select2();
+        </script>
+
+        <%= f.submit 'CONTINUE', class: "btn btn-sing-up marge-top"%>
+      <% end %>
+    </div>

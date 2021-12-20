@@ -1,0 +1,24 @@
+    <nav class="navbar navbar-expand-lg nav_background fixed-top">
+      <div class="container-fluid pad">
+        <a class="navbar-brand logo logo-button" href="#">Logo</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
+
+    <div class="conteiner">
+      <h6>
+        <%= link_to "Go back", sign_in_path, class: "bi bi-chevron-left link-back" %>
+      </h6>
+      <h4 class="reset-title">Reset password</h4>
+      <p class="help-text">Enter the e-mail associated with your account</p>
+      <p class="help-text">and we'll send an e-mail with instructions to reset your password.</p>
+      <%= form_with class: "form-registration", url: reset_password_coach_new_path do |f| %>
+        <div class="form-group">
+          <%= f.label 'Email:', class: "labels" %>
+          <%= f.text_field :email, class: "field form-control" %>
+        </div>
+        <%= f.submit 'SEND', class: "btn btn-sing-up marge-top" %>
+      <% end %>
+    </div>

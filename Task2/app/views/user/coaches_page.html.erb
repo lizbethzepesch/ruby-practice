@@ -1,0 +1,298 @@
+<% content_for :content do %>
+
+<div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content"></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-4">
+
+    <div class="card">
+      <div class="body">
+        <% if @invite %>
+          <% if @invite.status == false %>
+              <div class="row">
+                <div class="col-12 waiting">Waiting for confirmation</div>
+                <div class="col-2 coach-block-cp">
+                  <% if @invite.coach.avatar.attached? %>
+                    <img src="<%= url_for(@invite.coach.avatar) %>" class= "rounded-circle notification-avatar">
+                  <% else %>
+                    <img src="<%= asset_path('generic-user-icon-10.png') %>" class="rounded-circle notification-avatar">
+                  <% end %>
+                </div>
+                <div class="col-6">
+                  <p class="coach-block-cp-text"><%= @invite.coach.name %></p>
+                </div>
+                <div class="col-4">
+                  <%= button_to 'CANCEL', cancel_coach_invite_path(@invite.id), method: :delete, class:"btn btn-sing-up",  confirm: "Are you sure you want to cancel your invitation to cooperation with this coach?"%>
+                </div>
+              </div>
+            <% else %>
+                <div class="row">
+                  <div class="col-12 waiting">Current coach</div>
+                  <div class="col-2 coach-block-cp">
+                    <% if @invite.coach.avatar.attached? %>
+                      <img src="<%= url_for(@invite.coach.avatar) %>" class= "rounded-circle notification-avatar">
+                    <% else %>
+                      <img src="<%= asset_path('generic-user-icon-10.png') %>" class="rounded-circle notification-avatar">
+                    <% end %>
+                  </div>
+                  <div class="col-9">
+                    <p class="coach-block-cp-text"><%= @invite.coach.name %></p>
+                  </div>
+                  <div class="col-1">
+                    <div class="end-cooperation"><%= link_to raw("<i class=\"bi bi-three-dots-vertical get_down_link\"></i>"),
+                                      asking_form_path,
+                                      {:remote => true, 'data-bs-toggle' =>  "modal", 'data-bs-target' => '#modal-window'} %>
+                    </div>
+                  </div>
+                </div>
+          <% end %>
+        <% else %>
+          <div class="row">
+            <div class="col-2 coach-block-cp">
+              <img src="<%= asset_path('generic-user-icon-10.png') %>" class="rounded-circle notification-avatar">
+            </div>
+            <div class="col-7">
+              <p class="coach-block-cp-text">You don't have a coach yet</p>
+            </div>
+            <div class="col-3">
+            </div>
+          </div>
+        <% end %>
+
+
+      </div>
+    </div>
+    <%= form_with method: 'get', url: user_coahes_page_path do |f| %>
+      <div class="row-width">
+        <div class="row">
+          <div class="col-12 mt">
+            Filters
+          </div>
+
+
+          <div class="col-12 show-filters">
+            Expertise
+          </div>
+          <div class="col-12 filter-border">
+            <% @problems.each_with_index do |p, index|%>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="<%= p.name %>" name="filter[problems][]" id="problem<%= index %>" onclick='checkedInput(this);'>
+                <label class="form-check-label" for="problem<%= index %>">
+                  <%= p.name %>
+                </label>
+              </div>
+            <% end %>
+          </div>
+
+
+          <div class="col-12 show-filters">
+            Number of users in training
+          </div>
+          <div class="col-12 filter-border">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="5" id="users1" name="filter[users][]" onclick='checkedInput(this);'>
+              <label class="form-check-label" for="users1">
+                Less than 5 users
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="5-10" id="users2" name="filter[users][]" onclick='checkedInput(this);'>
+              <label class="form-check-label" for="users2">
+                5-10 users
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="10-20" id="users3" name="filter[users][]" onclick='checkedInput(this);'>
+              <label class="form-check-label" for="users3">
+                10-20 users
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="20" id="users4" name="filter[users][]" onclick='checkedInput(this);'>
+              <label class="form-check-label" for="users4">
+                More than 20 users
+              </label>
+            </div>
+          </div>
+
+          <div class="col-12 show-filters">
+            Gender
+          </div>
+          <div class="col-12 filter-border">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="gender1" name="filter[gender][]" value="" onclick='checkedInput(this);'>
+              <label class="form-check-label" for="gender1">
+                All
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="gender2" name="filter[gender][]" value="gender = 0" onclick='checkedInput(this);'>
+              <label class="form-check-label" for="gender2">
+                Male
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="gender3" name="filter[gender][]" value="gender = 1" onclick='checkedInput(this);'>
+              <label class="form-check-label" for="gender3">
+                Female
+              </label>
+            </div>
+          </div>
+
+          <div class="col-12 show-filters">
+            Age
+          </div>
+          <div class="col-12 filter-border">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="age1" value="age <= 25" name="filter[age][]" onclick='checkedInput(this);'>
+              <label class="form-check-label" for="age1">
+                To 25 years
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="age2" value="age > 25 and age <= 35" name="filter[age][]" onclick='checkedInput(this);'>
+              <label class="form-check-label" for="age2">
+                25-35 years
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="age > 35 and age <= 45" id="age3" name="filter[age][]" onclick='checkedInput(this);'>
+              <label class="form-check-label" for="age3">
+                35-45 years
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="age > 45" id="age4" name="filter[age][]" onclick='checkedInput(this);'>
+              <label class="form-check-label" for="age4">
+                Over 45 years
+              </label>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+      <%= f.submit "submit", class: "hide-button"%>
+    <% end %>
+
+  </div>
+  <div class="col-8">
+    <div class="row-width">
+      <div class="row">
+        <div class="col-10 mt">
+          Find coach
+        </div>
+        <div class="col-2 mt">
+          <%= form_with method: 'get', url: user_coahes_page_path do %>
+            <input class="form-control me-2" type="text" name="search" placeholder="Search" aria-label="Search">
+          <% end %>
+        </div>
+        <div class="col-12 pading-tags"  id="filters">
+          <div id="render-block">
+          </div>
+          <button class="clear-button-tags" id="remove-tags" onclick='removeAllTags(this);'>Сlear all filters</button>
+        </div>
+      </div>
+
+      <script type="text/javascript">
+        function checkedInput(inp) {
+          let render_block = document.getElementById("render-block")
+          if(inp.checked){
+            let span = document.createElement("span")
+            span.classList.add("tags-filter")
+            span.id = inp.id + 'elem'
+            let text = document.createTextNode(inp.labels[0].innerHTML)
+            let inLable = document.createElement("label")
+            inLable.htmlFor = inp.id
+            let i = document.createElement("i")
+            i.classList.add("bi", "bi-x-circle-fill")
+            inLable.appendChild(i)
+            span.appendChild(text);
+            span.appendChild(inLable);
+            render_block.appendChild(span);
+          }
+          else {
+            document.getElementById(inp.id + 'elem').remove()
+          }
+        }
+
+        function removeAllTags(button) {
+          let filters = document.getElementById('render-block')
+          let child = filters.lastElementChild;
+          while (child) {
+            filters.removeChild(child);
+            child = filters.lastElementChild;
+          }
+          let inputs = document.getElementsByClassName('form-check-input')
+          let url = document.URL.split('?')
+          for (let i = 0; i<inputs.length; i++) {
+            if (inputs[i].checked) {
+              inputs[i].checked = 0
+            }
+
+          }
+          window.history.replaceState({}, document.title, url[0]);
+        }
+        function paramsUrl() {
+          let url = document.URL.split('?')[1]
+          let searchParams = new URLSearchParams(url);
+
+          let inputs = document.getElementsByClassName('form-check-input')
+          for (let i = 0; i<inputs.length; i++) {
+            if (searchParams.getAll(inputs[i].name).includes(inputs[i].value)){
+              inputs[i].checked = 1
+              checkedInput(inputs[i])
+            }
+          }
+
+
+        }
+        paramsUrl()
+      </script>
+
+      <div class="row">
+        <% @coaches.each do |coach|%>
+          <div class="col-6">
+            <div class="card">
+              <div class="body">
+                <div class="small-card">
+                  <div class="image-avatar-small">
+                    <% if coach.avatar.attached? %>
+                      <img src="<%= url_for(coach.avatar) %>" class= "image-size rounded-circle ">
+                    <% else %>
+                      <img src="<%= asset_path('generic-user-icon-10.png') %>" class="image-size rounded-circle">
+                    <% end %>
+                  </div>
+                  <div class="name-coach">
+                    <span class="coach-name"><%= coach.name %></span><br>
+                    <span class="status">Coach</span>
+                    <p class="coach-info-left"><%= coach.age %> years | <%= coach.gender %> | <%= Invitation.where(coach_id: coach.id).count%> users</p>
+                    <p class="tages-info">Areas of Expertise</p>
+                    <% coach.problems.each do |coach_problem|%>
+                      <span class="tags"><%= coach_problem.name %></span>
+                    <% end %>
+
+                  </div>
+                  <div class="see-detail-button"><%= link_to 'SEE DETAILS', invitation_path(coach_id: coach.id),  {:remote => true, 'data-bs-toggle' =>  "modal", 'data-bs-target' => '#modal-window', class: "get_down_link"}  %></div>
+
+                </div>
+              </div>
+            </div>
+            <br>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+<% end %>
+<%= render template: "user/show" %>
